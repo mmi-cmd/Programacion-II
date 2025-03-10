@@ -1,16 +1,12 @@
 package mascotas;
 
-import java.util.ArrayList;
-
-import servicios.Servicio;
-
 public class Gato extends Mascota {
 
-    private int cantidadServicios = 0;
+    private int cantidadServicios;
 
     public Gato(String nombre, int edad, int cantidadServicios) {
         super(nombre, edad);
-        this.cantidadServicios = cantidadServicios;
+        this.cantidadServicios = 0;
     }
 
     public int getCantidadServicios() {
@@ -18,10 +14,7 @@ public class Gato extends Mascota {
     }
 
     public void setCantidadServicios(int cantidadServicios) {
-        this.cantidadServicios = cantidadServicios;
+        this.cantidadServicios--;
     }
-
-   
-
     
 }

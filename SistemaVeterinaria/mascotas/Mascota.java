@@ -9,9 +9,11 @@ public class Mascota {
     protected int edad;
     protected ArrayList<Servicio> serviciosRecibidos;
     
+    
     public Mascota(String nombre, int edad) {
         this.nombre = nombre;
         this.edad = edad;
+
     }
 
     public String getNombre() {
@@ -35,6 +37,9 @@ public class Mascota {
     }
 
     public void setServiciosRecibidos(Servicio serviciosRecibidos) { //cada vez que se acceda a un servicio, se añade a la lista
+        if (this.serviciosRecibidos == null) { // Inicializa la lista solo cuando se usa
+            this.serviciosRecibidos = new ArrayList<>();
+        }
         this.serviciosRecibidos.add(serviciosRecibidos);
     }
 

@@ -39,8 +39,12 @@ public class Cliente {
     public ArrayList<Mascota> getMascotas() {
         return mascotas;
     }
-    public void setMascotas(Mascota mascotas) {
-        this.mascotas.add(mascotas); //cada vez que se añada una mascota se agrega una por una
+    public void setMascotas(Mascota mascota) {
+        if (this.mascotas == null) { // Inicializa la lista solo cuando se usa
+            this.mascotas = new ArrayList<>();
+        }
+        this.mascotas.add(mascota);
     }
+    
     
 }

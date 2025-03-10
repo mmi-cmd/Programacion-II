@@ -1,15 +1,11 @@
 package mascotas;
 
-import java.util.ArrayList;
-
-import servicios.Servicio;
-
 public class Perro extends Mascota {
-    private boolean isGuarderia = false;
+    private boolean isGuarderia;
 
     public Perro(String nombre, int edad, boolean isGuarderia) {
         super(nombre, edad);
-        this.isGuarderia = isGuarderia;
+        this.isGuarderia = false;
     }
 
     public boolean isGuarderia() {
