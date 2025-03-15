@@ -14,7 +14,9 @@ public class Veterinaria {
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Cliente> clientes = new ArrayList<>();
-        ArrayList<Mascota> mascotas = new ArrayList<>();
+
+
+        System.out.println("¡Bienvenido a la veterinaria!");
 
         Cliente clienteActual = null;  // Variable que guarda al Cliente seleccionado
         Mascota mascotaSeleccionada = null; // Variable que guarda la mascota seleccionada
@@ -22,7 +24,6 @@ public class Veterinaria {
         Servicio nuevoServicio = null; // Variable "temporal" que guarda el servicio seleccionado hasta añadirse a la mascota
 
         while (true) { 
-            System.out.println("¡Bienvenido a la veterinaria!");
             System.out.println("Seleccione la opción que desea realizar para obtener nuestros servicios");
             System.out.println("1. Registrar o ingresar documento del cliente");
             System.out.println("2. Registrar o seleccionar mascota");
@@ -46,9 +47,9 @@ public class Veterinaria {
                     }
 
                     if (clienteEncontrado != null) { // Si encontramos un cliente con el documento ingresado
-                        ArrayList<Mascota> mascotasCliente = clienteEncontrado.getMascotas();
+                        ArrayList<Mascota> mascotasCliente = clienteEncontrado.getMascotas(); // Obtenemos las mascotas del cliente
                         if (mascotasCliente == null || mascotasCliente.isEmpty()) {
-                            System.out.println("El cliente encontrado pero no tiene mascotas registradas.");
+                            System.out.println("El cliente encontrado pero no tiene mascotas registradas."); // Si el cliente no tiene mascotas registradas, mostramos un mensaje
                         } else {
                             System.out.println("Las mascotas del cliente " + clienteEncontrado.getNombre() + " son:");
                             for (Mascota mascota : mascotasCliente) { // Recorremos la lista de mascotas del cliente y las mostramos
@@ -79,7 +80,7 @@ public class Veterinaria {
                     String nombreMascota = scanner.next();
                     
                     Mascota mascotaEncontrada = null;
-                    for (Mascota mascota : mascotas) {
+                    for (Mascota mascota : clienteActual.getMascotas()) {
                         if (mascota.getNombre().equalsIgnoreCase(nombreMascota)) { // Buscamos si la mascota ya está registrada
                             mascotaEncontrada = mascota; // Si la encontramos, la guardamos
                             break;
@@ -112,8 +113,7 @@ public class Veterinaria {
                             nuevaMascota = new Gato(nombreMascota, edadMascota, 0); // Se crea como Gato
                         }
 
-                        mascotas.add(nuevaMascota);
-                        clienteActual.setMascotas(nuevaMascota);
+                        clienteActual.setMascotas(nuevaMascota);// Se añade la mascota al cliente
                         System.out.println("Mascota registrada con éxito para el cliente " + clienteActual.getNombre());
 
                         mascotaSeleccionada = nuevaMascota;
@@ -156,6 +156,7 @@ public class Veterinaria {
                                     Perro perro = (Perro) mascotaSeleccionada;
                                     if (perro.isGuarderia()) { // Verifica si ya está en la guardería
                                         System.out.println("El perro ya está en la guardería y no puede volver a inscribirse.");
+                                        nuevoServicio = null;
                                         break;
                                     }
                                     nuevoServicio = new Servicio(1, "Guardería", 100000);

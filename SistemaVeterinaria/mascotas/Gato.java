@@ -14,7 +14,7 @@ public class Gato extends Mascota {
     }
 
     public void setCantidadServicios(int cantidadServicios) {
-        this.cantidadServicios--;
+        this.cantidadServicios = cantidadServicios;
     }
     
 }

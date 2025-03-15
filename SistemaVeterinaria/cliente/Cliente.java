@@ -36,15 +36,19 @@ public class Cliente {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
     public ArrayList<Mascota> getMascotas() {
+        if (mascotas == null) { 
+            mascotas = new ArrayList<>(); // Se inicializa solo cuando se accede
+        }
         return mascotas;
     }
+    
     public void setMascotas(Mascota mascota) {
         if (this.mascotas == null) { // Inicializa la lista solo cuando se usa
             this.mascotas = new ArrayList<>();
         }
         this.mascotas.add(mascota);
     }
-    
     
 }
